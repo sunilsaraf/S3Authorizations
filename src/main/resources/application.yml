@@ -1,0 +1,17 @@
+spring:
+  data:
+    cassandra:
+      contact-points: ${CASSANDRA_CONTACTPOINT:127.0.0.1}
+      port: ${CASSANDRA_PORT:9042}
+      keyspace-name: ${CASSANDRA_KEYSPACE:s3auth}
+      schema-action: create_if_not_exists
+
+server:
+  port: ${PORT:8080}
+
+app:
+  encryption:
+    kms:
+      enabled: ${ENCRYPTION_KMS_ENABLED:false}
+      key-arn: ${ENCRYPTION_KMS_KEY_ARN:}
+  # If KMS disabled, service will use local AES master key in env APP_MASTER_KEY (base64-encoded 32 bytes)
